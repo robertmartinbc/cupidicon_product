@@ -8,6 +8,14 @@
 </head>
 <body>
 
+  <ul>
+        <li><%= link_to "Home", welcome_index_path %></li>
+        <li><%= link_to "Need Content?", welcome_need_content_path %></li>
+        <li><%= link_to "Write Content", welcome_write_content_path %></li>
+        <li><%= link_to "Love's Lexicon", welcome_loves_lexicon_path %></li>        
+        <li><%= link_to "About", welcome_about_path %></li>
+    </ul>
+
 <%= yield %>
 
 </body>
