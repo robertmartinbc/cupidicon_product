@@ -1,5 +1,7 @@
 CupidiconProduct::Application.routes.draw do
 
+  devise_for :users
+
   resources :assignments  
 
   match "need_content" => 'welcome#need_content', via: :get
