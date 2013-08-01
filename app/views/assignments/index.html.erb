@@ -1,10 +1,14 @@
-<h1>All Assignmnets</h1>
+<h1>All Assignments</h1>
 <% @assignments.each do |assignment| %>
   <div class="media">
     <div class="media-body">
       <h4 class="media-heading">
         <%= link_to assignment.title, assignment %>
       </h4>
+      <small>
+        submitted <%= time_ago_in_words(assignment.created_at) %> ago by <%= assignment.user.name %><br/>
+        <%= assignment.comments.count %> Comments
+      </small>
     </div>
   </div>
 <% end %>

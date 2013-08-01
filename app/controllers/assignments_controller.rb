@@ -12,7 +12,7 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-  @assignment = Assignment.new(params[:assignment])
+  @assignment = current_user.assignments.build(params[:assignment])
   if @assignment.save
     flash[:notice] = "Assignment was saved."
     redirect_to @assignment
