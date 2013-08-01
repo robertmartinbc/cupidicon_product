@@ -1,0 +1,4 @@
+<h1>All Assignments</h1>
+<% @assignments.each do |assignment| %>
+  <p><%= link_to assignment.title, assignment %></p>
+<% end %>

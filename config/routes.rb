@@ -1,15 +1,16 @@
 CupidiconProduct::Application.routes.draw do
-  get "welcome/index"
 
-  get "welcome/need_content"
+  resources :assignments  
 
-  get "welcome/write_content"
+  match "need_content" => 'welcome#need_content', via: :get
 
-  get "welcome/loves_lexicon"
+  match "write_content" => 'welcome#write_content', via: :get
 
-  get "welcome/about"
+  match "loves_lexicon" => 'welcome#loves_lexicon', via: :get
 
-  root to: 'welcome#index'
+  match "about" => 'welcome#about', via: :get
+
+  root :to => 'welcome#index'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
