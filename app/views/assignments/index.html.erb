@@ -1,4 +1,7 @@
 <h1>All Assignments</h1>
+<% if can? :create, Assignment %>
+<%= link_to "New Assignment", new_assignment_path, class: 'btn btn-primary btn-mini' %>
+<% end %>
 <% @assignments.each do |assignment| %>
   <div class="media">
     <div class="media-body">
