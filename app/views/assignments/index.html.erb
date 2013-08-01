@@ -1,4 +1,10 @@
-<h1>All Assignments</h1>
+<h1>All Assignmnets</h1>
 <% @assignments.each do |assignment| %>
-  <p><%= link_to assignment.title, assignment %></p>
+  <div class="media">
+    <div class="media-body">
+      <h4 class="media-heading">
+        <%= link_to assignment.title, assignment %>
+      </h4>
+    </div>
+  </div>
 <% end %>

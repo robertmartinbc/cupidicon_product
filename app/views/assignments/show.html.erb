@@ -1,2 +1,5 @@
 <h1><%= @assignment.title %></h1>
+
+<%= link_to "Edit", edit_assignment_path(@assignment), class: 'btn btn-mini' %>
+
 <p><%= @assignment.body %></p>
