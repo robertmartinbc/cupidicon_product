@@ -1,5 +1,17 @@
 <h1><%= @assignment.title %></h1>
-<% if can? :edit, @assignment %>
-<%= link_to "Edit", edit_assignment_path(@assignment), class: 'btn btn-mini' %>
-<% end %>
-<p><%= @assignment.body %></p>
+
+<div class="row">
+  <div class="span8">
+    <small>
+      <%= image_tag(@assignment.user.avatar.tiny.url) if @assignment.user.avatar? %>
+      submitted <%= time_ago_in_words(@assignment.created_at) %> ago by 
+      <%= @assignment.user.name %>
+    </small>    
+    <p><%= @assignment.body %></p>
+  </div>
+  <div class="span4">
+    <% if can? :edit, @assignment %>
+      <%= link_to "Edit", edit_assignment_path(@assignment), class: 'btn btn-large btn-block' %>
+    <% end %>
+  </div>
+</div>
