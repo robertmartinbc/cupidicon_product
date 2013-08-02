@@ -2,6 +2,8 @@ CupidiconProduct::Application.routes.draw do
 
   devise_for :users
 
+  resources :users, only: [:show] # create a route for users#show
+
   resources :assignments  
 
   match "need_content" => 'welcome#need_content', via: :get
