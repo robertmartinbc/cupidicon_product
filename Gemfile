@@ -30,6 +30,8 @@ gem 'mini_magick', '~> 3.5.0'
 gem 'fog'
 gem 'figaro'
 gem 'state_machine', "~> 1.2.0"
+gem 'simple_form'
+gem 'country_select'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -8,7 +8,7 @@ class AssignmentsController < ApplicationController
     if @assignment.state == 0
       if @assignment.transactions.where(writer_id: @assignment.user_id, transaction_type: "review").length > 2
         flash[:notice] = "You can no longer review this assignment"
-        redirect_to "/assignments"
+        redirect_to assignments_path
       else
          @assignment.review 
         # Change the current user's state
@@ -16,19 +16,19 @@ class AssignmentsController < ApplicationController
       end
     else
       flash[:notice] = "That assignment is currently being reviewed by another writer"
-      redirect_to "/assignments"
+      redirect_to assignments_path
     end
   end
 
   def new
     @assignments = Assignment.new
-    authorize! :create, Assignment, message: "You need to be a member to create a new assignment."
+  #  authorize! :create, Assignment, message: "You need to be a member to create a new assignment."
   end
 
   def create
-  @assignment = current_user.assignments.build(params[:assignment])
+  @assignments = current_user.assignments.build(params[:assignment])
   authorize! :create, @assignment, message: "You need to be signed up to do that."
-  if @assignment.save
+  if @assignments.save
     flash[:notice] = "Assignment was saved."
     redirect_to @assignment
   else
@@ -58,7 +58,7 @@ end
     @assignment = Assignment.find(params[:id])
     @assignment.renew
     @assignment.transactions.create(transaction_type: "renew", writer_id: @assignment.user_id)
-    redirect_to "/assignments"
+    redirect_to assignments_path
   end
 
   def write  
@@ -72,10 +72,10 @@ end
     if @assignment.cancel
       @assignment.transactions.create(transaction_type: "cancel", writer_id: @assignment.user_id)
       flash[:notice] = "You can only review this assignment 1 more time."
-      redirect_to "/assignments"
+      redirect_to assignments_path
     else
       flash[:error] = "Something went wrong."
-      redirect_to "/assignments"
+      redirect_to assignments_path
     end
   end
 
@@ -97,7 +97,7 @@ end
     @assignment = Assignment.find(params[:id])
     @assignment.reject
     @assignment.transactions.create(transaction_type: "reject", writer_id: @assignment.user_id)
-    redirect_to "/assignments"
+    redirect_to assignments_path
   end
 
   def revision
