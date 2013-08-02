@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :assignments
 
+  has_many :submissions
+
   before_create :set_member
 
   mount_uploader :avatar, AvatarUploader
