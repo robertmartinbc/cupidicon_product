@@ -1,5 +1,21 @@
 CupidiconProduct::Application.routes.draw do
 
+   get "user/available"
+
+  get "user/engaged"
+
+  get "assignments/reauthorization"
+
+  get "assignments/resubmit"
+
+  get "assignments/revision"
+
+  get "assignments/published"
+
+  get "assignments/authorize"
+
+  get "assignments/write"
+
   devise_for :users
 
   resources :users, only: [:show] # create a route for users#show
@@ -15,6 +31,24 @@ CupidiconProduct::Application.routes.draw do
   match "about" => 'welcome#about', via: :get
 
   root :to => 'welcome#index'
+
+  post "assignments/:id/renew", to: 'assignments#renew'
+
+  post "assignments/:id/cancel", to: 'assignments#cancel'
+
+  post "assignments/:id/write", to: 'assignments#write'
+
+  post "assignments/:id/authorize", to: 'assignments#authorize'
+
+  post "assignments/:id/published", to: 'assignments#published'
+
+  post "assignments/:id/reject", to: 'assignments#reject'
+
+  post "assignments/:id/resubmit", to: 'assignments#resubmit'
+
+  post "assignments/:id/revision", to: 'assignments#revision'
+
+  post "assignments/:id/reauthorization", to: 'assignments#reauthorization'
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

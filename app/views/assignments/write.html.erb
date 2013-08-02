@@ -1,0 +1,82 @@
+<h3>Write Assignment</h3>
+
+
+
+<p style="text-align: justify;">You have elected to write this assignment. Please read the requirements carefully. Once you have written the assignment it will be reviewed by the client. They may request a revision so please check your assignment status regularly. Should they accept your submission you will be paid the agreed amount accordingly.</p>
+
+<p>Alternatively, you can elect to cancel the assignment, but you will only be allowed to select this assignment once more.</p>
+
+<hr>
+
+<div class="media"> 
+  <div class="media-body">
+    <div class="row">
+      <div class="span12">
+        <div class="thumbnail">
+        <table class="table table-condensed table-striped">
+          <tr>
+          <th>Title</th>
+          <th>Description</th>
+          <th>Word Count</th> 
+          <th>Language</th>
+          <th>Rating</th>
+          <th>Key Words</th>
+          <th>Price</th>
+          <th>Style</th>
+          <th>Instructions</th>
+          </tr>
+
+          <tr>
+          <td><%= @assignment.title %></td>
+              <td><%= @assignment.body %></td>
+              <td><%= @assignment.word_count %></td>
+              <td><%= @assignment.language %></td>
+              <td><%= @assignment.rating %></td>
+              <td><%= @assignment.key_words %></td>
+              <td><%= @assignment.cost %></td>
+              <td><%= @assignment.style %></td>
+              <td><%= @assignment.instructions %></td>
+              </tr>              
+            </table>    
+          </div>
+        </div>
+      </div>
+      <div class="row">
+    <%= form_for @assignment, html: { class: 'form-horizontal' } do |f| %>
+      </div>
+      <div class="control-group">
+        <%= f.label :body, class: 'control-label' %>
+        <div class="controls">
+          <%= f.text_area :body, rows: 8 %>
+        </div>
+      </div>
+      </div>
+    <% end %>
+    <table>
+              <tr>
+              <td><%= form_tag("cancel") do %>
+                <%= submit_tag 'Cancel' %>    
+              <% end %>
+              </td>
+              <td> <%= form_tag("/assignments/#{@assignment.id}/authorize") do %>
+                  <%= submit_tag 'Submit' %>
+                  <% end %>
+              </td>
+              </tr>      
+            </table>
+    
+    
+
+    </div> 
+  </div>
+
+
+    
+    
+
+
+
+
+
+
+

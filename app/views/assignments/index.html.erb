@@ -1,17 +1,22 @@
-<h1>All Assignments</h1>
-<% if can? :create, Assignment %>
-<%= link_to "New Assignment", new_assignment_path, class: 'btn btn-primary btn-mini' %>
-<% end %>
+<h3>All Assignments</h3>
+
+<p>Please select one of the assignments below to review. You can only review an assignment twice.</p>
+<hr>
+
 <% @assignments.each do |assignment| %>
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-        <%= link_to assignment.title, assignment %>
-      </h4>
-      <small>
-        submitted <%= time_ago_in_words(assignment.created_at) %> ago by <%= assignment.user.name %><br/>
-        <%= assignment.comments.count %> Comments
-      </small>
-    </div>
+ 
+<div class="media"> 
+  <div class="media-body">
+    <div class="row">
+      <div class="span12">
+        <div class="thumbnail">      
+          <h5><%= link_to assignment.title, assignment %></h5>
+            <small>
+                submitted <%= time_ago_in_words(assignment.created_at) %> ago by <%= assignment.user.name %><br/>        
+            </small>      
+          </div>
+        </div>
+      </div>
+    </div> 
   </div>
 <% end %>

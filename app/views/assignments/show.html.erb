@@ -10,8 +10,14 @@
     <p><%= @assignment.body %></p>
   </div>
   <div class="span4">
+    <%= form_tag("#{@assignment.id}/renew") do %>
+  <div><%= submit_tag 'Release' %></div>
+<% end %>
     <% if can? :edit, @assignment %>
       <%= link_to "Edit", edit_assignment_path(@assignment), class: 'btn btn-large btn-block' %>
     <% end %>
+    <%= form_tag("#{@assignment.id}/write") do %>
+  <div><%= submit_tag 'Write' %></div>
+<% end %>
   </div>
 </div>

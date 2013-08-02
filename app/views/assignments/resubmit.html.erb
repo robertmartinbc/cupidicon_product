@@ -1,0 +1,38 @@
+<h1>Assignment Resubmit</h1>
+<p>An author has fulfilled your requested revision. Please accept or reject accordingly. You can also request the author to rewrite the assignment if desired. Please specify any changes that need to be made below.</p>
+
+<div class="media"> 
+  <div class="media-body">
+    <div class="row">
+      <div class="span12">
+        <div class="thumbnail">      
+          <h4><%= @assignment.title %></h4>
+            <p><%= @assignment.body %></p>
+            <p><%= @assignment.word_count %></p>
+            <p><%= @assignment.language %></p>
+            <p><%= @assignment.rating %></p>
+            <p><%= @assignment.key_words %></p>
+            <p><%= @assignment.cost %></p>
+            <p><%= @assignment.style %></p>
+            <p><%= @assignment.instructions %></p>  
+          </div>          
+        </div>
+      </div>
+      <p>
+      <table>
+              <tr>
+              <td><%= form_tag("/assignments/#{@assignment.id}/published") do %>
+                  <%= submit_tag 'Accept' %>
+              <% end %>
+              </td>
+              <td><%= form_tag("revision") do %>
+                  <%= submit_tag 'Revision' %>
+              <% end %>
+              </td>
+              <td><%= form_tag("reject") do %>
+                  <%= submit_tag 'Reject' %>
+              <% end %>
+              </td>
+              </tr>      
+            </table>
+
