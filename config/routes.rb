@@ -1,5 +1,13 @@
 CupidiconProduct::Application.routes.draw do
 
+  get "submissions/index"
+
+  get "submissions/show"
+
+  get "submissions/edit"
+
+  get "submissions/new"
+
    get "user/available"
 
   get "user/engaged"
@@ -20,7 +28,9 @@ CupidiconProduct::Application.routes.draw do
 
   resources :users, only: [:show] # create a route for users#show
 
-  resources :assignments  
+  resources :assignments
+
+  resources :submissions  
 
   match "need_content" => 'welcome#need_content', via: :get
 
