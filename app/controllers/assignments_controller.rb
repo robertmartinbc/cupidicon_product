@@ -26,8 +26,7 @@ class AssignmentsController < ApplicationController
   end
 
   def create
-  @assignment = current_user.assignments.build(params[:assignment])
-  
+  @assignment = current_user.assignments.build(params[:assignment])  
   authorize! :create, @assignment, message: "You need to be signed up to do that."
   if @assignment.save
     flash[:notice] = "Assignment was saved."
@@ -64,15 +63,8 @@ end
 
   def write  
     @assignment = Assignment.find(params[:id])
-    authorize! :write, @assignment, message: "You need to be a member to write assignment."
-    if @assignment.write
-    @assignment.transactions.create(transaction_type: "write", writer_id: @assignment.user_id)
-    flash[:notice] = "Assignment has been submitted for review by the client."
-    redirect_to user_path(current_user.id)
-  else 
-    flash[:error] = "There was a problem submitting the assignment. Please try again."
-    redirect_to @assignment
-  end
+    @assignment.write
+    @assignment.transactions.create(transaction_type: "write", writer_id: @assignment.user_id)        
   end
 
   def cancel
@@ -90,9 +82,14 @@ end
 
   def authorize
     @assignment = Assignment.find(params[:id])
-    @assignment.authorize
-    @assignment.transactions.create(transaction_type: "authorize", writer_id: @assignment.user_id)
-   
+    if @assignment.authorize
+      @assignment.transactions.create(transaction_type: "authorize", writer_id: @assignment.user_id)
+      flash[:notice] = "Assignment was submited for review by client."
+      redirect_to user_path(current_user.id)
+    else
+      flash[:error] = "There was a problem submitting the assignment. Please try again"
+      redirect_to @assignment
+    end
   end
  
   def published

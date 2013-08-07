@@ -48,10 +48,14 @@
                   <%= submit_tag 'Cancel' %>
               <% end %>
               </td>
-              <td><%= form_tag("#{@assignment.id}/write") do %>
+              
+              <td>
+                <%= form_tag("#{@assignment.id}/write") do %>
                   <%= submit_tag 'Write' %>
-                  <% end %>
+                 
+                    <% end %>
               </td>
+
               </tr>      
             </table>    
   </div>

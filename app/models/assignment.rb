@@ -11,6 +11,14 @@ class Assignment < ActiveRecord::Base
     where(state: 6)
   end
 
+  def self.authorize
+    where(state: 3)
+  end
+
+  def self.revision
+    where(state: 4)
+  end
+
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true  
   validates :user, presence: true

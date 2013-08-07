@@ -21,10 +21,11 @@
   <div class="tabbable">
     <ul class="nav nav-tabs">
       <li class="active"><a href="#assignments" data-toggle="tab">Assignments</a></li>
-      <li><a href="#comments" data-toggle="tab">Revisions</a></li>
+      <li><a href="#revision" data-toggle="tab">Revision</a></li>
       <li><a href="#published" data-toggle="tab">Published</a></li>
+      <li><a href="#authorize" data-toggle="tab">Authorize</a></li>
       <li><a href="#comments" data-toggle="tab">Comments</a></li>
-      <li><a href="#comments" data-toggle="tab">Account</a></li>
+      <li><a href="#account" data-toggle="tab">Account</a></li>
       
     </ul>
     <div class="tab-content">
@@ -34,13 +35,23 @@
           <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
         <% end %>
       </div>
-      <div class="tab-pane" id="comments">
-        
+      <div class="tab-pane" id="revision">
+        <% @revision_assignments.each do |assignment| %>
+          <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
+        <% end %>
       </div>
       <div class="tab-pane" id="published">
         <% @published_assignments.each do |assignment| %>
           <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
         <% end %>
+      </div>
+      <div class="tab-pane" id="authorize">
+        <% @authorize_assignments.each do |assignment| %>
+          <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
+        <% end %>
+      </div>
+      <div class="tab-pane" id="account">
+        
       </div>
     </div>
   </div>
