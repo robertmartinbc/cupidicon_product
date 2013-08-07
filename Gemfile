@@ -32,6 +32,8 @@ gem 'figaro'
 gem 'state_machine', "~> 1.2.0"
 gem 'simple_form'
 gem 'country_select'
+gem 'social-buttons'
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
