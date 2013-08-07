@@ -21,16 +21,17 @@ class AssignmentsController < ApplicationController
   end
 
   def new
-    @assignments = Assignment.new
+    @assignment = Assignment.new
     authorize! :create, Assignment, message: "You need to be a member to create a new assignment."
   end
 
   def create
-  @assignments = current_user.assignments.build(params[:assignment])
+  @assignment = current_user.assignments.build(params[:assignment])
+  
   authorize! :create, @assignment, message: "You need to be signed up to do that."
-  if @assignments.save
+  if @assignment.save
     flash[:notice] = "Assignment was saved."
-    redirect_to user_path
+    redirect_to user_path(current_user.id)
   else
     flash[:error] = "There was an error saving the Assignment. Please try again."
     render :new

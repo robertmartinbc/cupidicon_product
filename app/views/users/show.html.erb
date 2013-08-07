@@ -22,7 +22,7 @@
     <ul class="nav nav-tabs">
       <li class="active"><a href="#assignments" data-toggle="tab">Assignments</a></li>
       <li><a href="#comments" data-toggle="tab">Revisions</a></li>
-      <li><a href="#acomments" data-toggle="tab">Published</a></li>
+      <li><a href="#published" data-toggle="tab">Published</a></li>
       <li><a href="#comments" data-toggle="tab">Comments</a></li>
       <li><a href="#comments" data-toggle="tab">Account</a></li>
       
@@ -30,10 +30,17 @@
     <div class="tab-content">
 
       <div class="tab-pane active" id="assignments">
-        <%= Assignment.published %>
+        <% @user.assignments.each do |assignment| %>
+          <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
+        <% end %>
       </div>
       <div class="tab-pane" id="comments">
         
+      </div>
+      <div class="tab-pane" id="published">
+        <% @published_assignments.each do |assignment| %>
+          <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
+        <% end %>
       </div>
     </div>
   </div>

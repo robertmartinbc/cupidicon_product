@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @assignments = @user.assignments(current_user)  
+    @published_assignments = Assignment.published.where(user_id: @user.id)     
   end
 
 end

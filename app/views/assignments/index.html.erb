@@ -2,6 +2,11 @@
 
 <p>Please select one of the assignments below to review. You can only review an assignment twice.</p>
 <hr>
+<div>
+<% if can? :create, Assignment %>
+<%= link_to "New Assignment", new_assignment_path, class: 'btn btn-primary btn-mini' %>
+<% end %>
+</div>
 
 <% @assignments.each do |assignment| %>
  

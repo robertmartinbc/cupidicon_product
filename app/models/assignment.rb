@@ -8,7 +8,7 @@ class Assignment < ActiveRecord::Base
   default_scope order('created_at DESC')
 
   def self.published
-    where(published: true)
+    where(state: 6)
   end
 
   validates :title, length: { minimum: 5 }, presence: true
