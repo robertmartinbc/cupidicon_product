@@ -64,8 +64,15 @@ end
 
   def write  
     @assignment = Assignment.find(params[:id])
-    @assignment.write
-    @assignment.transactions.create(transaction_type: "write", writer_id: @assignment.user_id)        
+    authorize! :write, @assignment, message: "You need to be a member to write assignment."
+    if @assignment.write
+    @assignment.transactions.create(transaction_type: "write", writer_id: @assignment.user_id)
+    flash[:notice] = "Assignment has been submitted for review by the client."
+    redirect_to user_path(current_user.id)
+  else 
+    flash[:error] = "There was a problem submitting the assignment. Please try again."
+    redirect_to @assignment
+  end
   end
 
   def cancel

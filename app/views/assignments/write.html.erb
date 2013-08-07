@@ -61,10 +61,12 @@
                 <%= submit_tag 'Cancel' %>    
               <% end %>
               </td>
+              <% if can? :write, Assignment %>
               <td> <%= form_tag("/assignments/#{@assignment.id}/authorize") do %>
                   <%= submit_tag 'Submit' %>
                   <% end %>
               </td>
+              <% end %>
               </tr>      
             </table>
     
