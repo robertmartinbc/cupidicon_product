@@ -11,7 +11,7 @@ class Assignment < ActiveRecord::Base
     where(state: 6)
   end
 
-  def self.authorize
+  def self.authorization
     where(state: 3)
   end
 
@@ -27,7 +27,7 @@ class Assignment < ActiveRecord::Base
     state :open, value: 0
     state :review, value: 1
     state :write, value: 2
-    state :authorize, value: 3
+    state :authorization, value: 3
     state :revision, value: 4
     state :resubmit, value: 5   
     state :published, value: 6
@@ -48,20 +48,20 @@ class Assignment < ActiveRecord::Base
       transition :write => :open
     end
 
-    event :authorize do 
-      transition :write => :authorize
+    event :authorization do 
+      transition :write => :authorization
     end
 
     event :published do
-      transition :authorize => :published
+      transition :authorization => :published
     end
 
     event :reject do 
-      transition :authorize => :open
+      transition :authorization => :open
     end
 
     event :revision do
-      transition :authorize => :revision
+      transition :authorization => :revision
     end
 
     event :resubmit do

@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   has_many :assignments
 
-  has_many :submissions
+  has_many :submissions, foreign_key: :writer_id
 
   before_create :set_member
 

@@ -63,6 +63,7 @@ end
 
   def write  
     @assignment = Assignment.find(params[:id])
+    @submission = @assignment.submissions.new
     @assignment.write
     @assignment.transactions.create(transaction_type: "write", writer_id: @assignment.user_id)        
   end
@@ -81,8 +82,9 @@ end
 
 
   def authorize
-    @assignment = Assignment.find(params[:id])
-    if @assignment.authorize
+    @submission = Submission.find(params[:submission_id])
+    @assignment = @submission.assignment
+    if @assignment.authorization
       @assignment.transactions.create(transaction_type: "authorize", writer_id: @assignment.user_id)
       flash[:notice] = "Assignment was submited for review by client."
       redirect_to user_path(current_user.id)

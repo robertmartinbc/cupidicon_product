@@ -7,7 +7,7 @@
       <div class="media-body">
         <h2 class="media-heading"><%= @user.name %></h2>
         <small>
-          <%= pluralize(@user.assignments.count, 'assignment') %>,
+          <%= pluralize(@user.assignments.count, 'assignment') %>
           
         </small>
       </div>
@@ -36,9 +36,9 @@
         <% end %>
       </div>
       <div class="tab-pane" id="revision">
-       <% @revision_assignments.each do |assignment| %>
-          <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
-        <% end %> 
+       <%# @revision_assignments.each do |assignment| %>
+          <p><%# link_to assignment.title, assignment_path(assignment.id) %></p>
+        <%# end %> 
       </div>
       <div class="tab-pane" id="published">
         <% @published_assignments.each do |assignment| %>
@@ -46,10 +46,14 @@
         <% end %>
       </div>
       <div class="tab-pane" id="authorize">
-        <% @authorize_assignments.each do |assignment| %>
-          <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
-        <% end %>
+        <%# @authorize_assignments.each do |assignment| %>
+          <p><%#= link_to assignment.title, assignment_path(assignment.id) %></p>
+          <p>Test</p>
+        <%# end %>
       </div>
+      <div class="tab-pane" id="comments">
+        
+      </div>   
       <div class="tab-pane" id="account">
         
       </div>    

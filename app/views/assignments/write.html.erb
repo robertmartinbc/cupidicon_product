@@ -46,11 +46,11 @@
       <strong>Please input your text here:</strong>
       </div>
       <div class="row">
-        <%= simple_form_for @assignment do |f| %>
+        <%= simple_form_for @submission do |f| %>
       </div>
       <div class="control-group">        
         <div class="controls">
-          <%= f.input :body, :as => :text, :input_html => { class: 'test', :cols => 150, :rows => 15 } %>
+          <%= f.input :description, :as => :text, :input_html => { class: 'test', :cols => 150, :rows => 15 } %>
         </div>
       </div>
       </div>

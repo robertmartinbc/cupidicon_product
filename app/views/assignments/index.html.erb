@@ -17,9 +17,10 @@
         <div class="thumbnail">      
           <h5><%= link_to assignment.title, assignment %></h5>
             <small>
-                submitted <%= time_ago_in_words(assignment.created_at) %> ago by <%= assignment.user.name %><br/> 
-                
-            </small>      
+                submitted <%= time_ago_in_words(assignment.created_at) %> ago by <%= assignment.user.name %><br/>                 
+            </small> 
+            <p><%= assignment.cost %></P> 
+            <p><%= assignment.rating %></P>    
           </div>
         </div>
       </div>

@@ -50,7 +50,7 @@
               </td>
               
               <td>
-                <%= form_tag("#{@assignment.id}/write") do %>
+                <%= form_tag("#{@assignment.id}/submissions/new", method: "get") do %>
                   <%= submit_tag 'Write' %>
                  
                     <% end %>
