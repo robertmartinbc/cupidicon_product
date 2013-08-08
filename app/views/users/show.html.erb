@@ -23,7 +23,7 @@
       <li class="active"><a href="#assignments" data-toggle="tab">Assignments</a></li>
       <li><a href="#revision" data-toggle="tab">Revision</a></li>
       <li><a href="#published" data-toggle="tab">Published</a></li>
-      <li><a href="#authorize" data-toggle="tab">Authorize</a></li>
+      <li><a href="#authorization" data-toggle="tab">Authorization</a></li>
       <li><a href="#comments" data-toggle="tab">Comments</a></li>
       <li><a href="#account" data-toggle="tab">Account</a></li>
       
@@ -36,20 +36,20 @@
         <% end %>
       </div>
       <div class="tab-pane" id="revision">
-       <%# @revision_assignments.each do |assignment| %>
+       <% @revision_assignments.each do |assignment| %>
           <p><%# link_to assignment.title, assignment_path(assignment.id) %></p>
-        <%# end %> 
+        <% end %> 
       </div>
       <div class="tab-pane" id="published">
         <% @published_assignments.each do |assignment| %>
           <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
         <% end %>
       </div>
-      <div class="tab-pane" id="authorize">
-        <%# @authorize_assignments.each do |assignment| %>
-          <p><%#= link_to assignment.title, assignment_path(assignment.id) %></p>
+      <div class="tab-pane" id="authorization">
+        <% @authorize_assignments.each do |assignment| %>
+          <p><%= link_to assignment.title, assignment_path(assignment.id) %></p>
           <p>Test</p>
-        <%# end %>
+        <% end %>
       </div>
       <div class="tab-pane" id="comments">
         

@@ -1,5 +1,6 @@
 CupidiconProduct::Application.routes.draw do
 
+  get "submissions/new"
   
    get "user/available"
 
@@ -25,6 +26,9 @@ CupidiconProduct::Application.routes.draw do
     resources :submissions
   end
 
+  resources :submissions 
+  
+  match "new" => 'submissions#new', via: :get
 
   match "need_content" => 'welcome#need_content', via: :get
 

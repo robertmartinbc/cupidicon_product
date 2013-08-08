@@ -1,5 +1,6 @@
 class SubmissionsController < ApplicationController
   def index
+
   end
 
   def show
@@ -17,7 +18,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @submissions = current_user.submissions.build(params[:submission])
+    @submission = current_user.submissions.build(params[:id])
       if submission.save
     flash[:notice] = "Submission was saved."
     redirect_to user_path

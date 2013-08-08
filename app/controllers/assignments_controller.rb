@@ -82,7 +82,7 @@ end
 
 
   def authorize
-    @submission = Submission.find(params[:submission_id])
+    @submission = Submission.find(params[:submission])
     @assignment = @submission.assignment
     if @assignment.authorization
       @assignment.transactions.create(transaction_type: "authorize", writer_id: @assignment.user_id)
