@@ -23,12 +23,12 @@ CupidiconProduct::Application.routes.draw do
   resources :users, only: [:show] # create a route for users#show
 
   resources :assignments do 
-    resources :submissions
+    resource :submissions
   end
 
-  resources :submissions 
+  # resources :submissions 
   
-  match "new" => 'submissions#new', via: :get
+  # match "new" => 'submissions#new', via: :get
 
   match "need_content" => 'welcome#need_content', via: :get
 
