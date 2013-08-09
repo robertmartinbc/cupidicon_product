@@ -27,7 +27,10 @@ CupidiconProduct::Application.routes.draw do
   end
 
   # resources :submissions 
+<<<<<<< HEAD
 
+=======
+>>>>>>> c08873ac1e7772f51c882c5b4a9ef5e53c96c2af
   
   # match "new" => 'submissions#new', via: :get
 
