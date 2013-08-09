@@ -45,41 +45,28 @@
       <div>
       <strong>Please input your text here:</strong>
       </div>
-      <div class="row">
-        <%= simple_form_for [@assignment, @submission] do |f| %>
-      </div>
+      <div class="row"></div>
       <div class="control-group">        
         <div class="controls">
-          <%= f.input :description, :as => :text, :input_html => { class: 'test', :cols => 150, :rows => 15 } %>
+          <%= simple_form_for @submission do |f| %>
+            <%= f.input :description, :as => :text, :input_html => { class: 'test', :cols => 150, :rows => 15 } %>
+          <%# end %>
         </div>
       </div>
-      </div>
-    <% end %>
+      
     <table>
-              <tr>
-              <td><%= form_tag("cancel") do %>
-                <%= submit_tag 'Cancel' %>    
-              <% end %>
-              </td>
-              <td> <%= form_tag("/assignments/#{@assignment.id}/authorize") do %>
-                  <%= submit_tag 'Submit' %>
-                  <% end %>
-              </td>
-              </tr>      
-            </table>
-    
-    
-
-    </div> 
-  </div>
-
-
-    
-    
-
-
-
-
-
-
-
+      <tr>
+       <td>
+         <%= form_tag("cancel") do %>
+           <%= submit_tag 'Cancel' %>    
+         <% end %>
+       </td>
+       <td>
+         <%# form_tag("/assignments/#{@assignment.id}/authorize") do %>
+           <%= f.submit 'Submit' %>
+         <% end %>
+       </td>
+       </tr>      
+     </table>
+   </div>
+ </div>
