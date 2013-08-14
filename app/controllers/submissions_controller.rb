@@ -18,7 +18,7 @@ class SubmissionsController < ApplicationController
   end
 
   def create
-    @assignment = Assignment.find(params[:assignment_id]
+    @assignment = Assignment.find(params[:assignment_id])
     @submission = current_user.submissions.new(assignment_id: @assignment.id)
     @submission.save
     
